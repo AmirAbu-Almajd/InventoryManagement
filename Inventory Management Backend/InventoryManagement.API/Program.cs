@@ -26,8 +26,20 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowAngular");
 
 app.Run();
