@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 
 export interface Product {
   id: string;
-  code: string;
   name: string;
+  price: number;
+  quantity: number;
 }
 
 export interface ProductDto {
@@ -17,7 +18,7 @@ export interface ProductDto {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:44373/api/product'; 
+  private apiUrl = 'https://localhost:44373/api/product'; // update port if needed
 
   constructor(private http: HttpClient) {}
 
