@@ -1,5 +1,7 @@
 using Infrastructure.Repositories;
 using InventoryManagement.Domain.Interfaces;
+using InventoryManagement.Application.Interfaces;
+using InventoryManagement.Application.Services;
 using InventoryManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +13,21 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("https://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 
 var app = builder.Build();
 
@@ -26,15 +40,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAngular", policy =>
-    {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
 
 app.UseAuthorization();
 

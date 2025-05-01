@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'product-list',
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent implements OnInit {
