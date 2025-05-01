@@ -1,6 +1,6 @@
-<h2>Product List</h2>
+<h2 >Product List</h2>
 <ul *ngIf="products.length > 0">
-  <li *ngFor="let product of products">
+  <li class="mx-3 success" *ngFor="let product of products">
     {{ product.code }} {{ product.name }}
   </li>
 </ul>
