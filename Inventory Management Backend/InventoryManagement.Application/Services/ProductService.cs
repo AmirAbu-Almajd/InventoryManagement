@@ -56,6 +56,7 @@ namespace InventoryManagement.Application.Services
 
             existing.Name = dto.Name;
             existing.Code = dto.Code;
+            existing.Description = dto.Description;
 
             await _productsRepository.UpdateAsync(existing);
         }

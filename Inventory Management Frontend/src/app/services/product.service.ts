@@ -6,11 +6,14 @@ export interface Product {
   id: string;
   code: string;
   name: string;
+  description: string;
 }
 
 export interface ProductDto {
+  id?: string;
   code: string;
   name: string;
+  description: string;
 }
 
 @Injectable({
@@ -26,15 +29,15 @@ export class ProductService {
   }
 
   getProduct(id: string): Observable<ProductDto> {
-    return this.http.get<ProductDto>(`${this.apiUrl}/${id}`);
+    return this.http.get<ProductDto>(`${this.apiUrl}/getById/${id}`);
   }
 
   createProduct(product: ProductDto): Observable<any> {
-    return this.http.post(this.apiUrl, product);
+    return this.http.post(`${this.apiUrl}/create/`, product);
   }
 
   updateProduct(product: ProductDto): Observable<any> {
-    return this.http.put(this.apiUrl, product);
+    return this.http.put(`${this.apiUrl}/update/`, product);
   }
 
   deleteProduct(id: string): Observable<any> {

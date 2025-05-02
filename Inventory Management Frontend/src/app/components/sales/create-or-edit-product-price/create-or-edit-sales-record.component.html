@@ -1,0 +1,25 @@
+<p-drawer [visible]="visible" position="right" [modal]="true" [style]="{ width: '30vw' }" (onHide)="onClose()">
+    <div class="p-drawer-header">
+        <h3>{{ salesRecord ? 'Edit Sales Record' : 'Add Sales Record' }}</h3>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12">
+            <label class="col-3" for="product"><strong>Product</strong></label>
+            <p-select class="col-9" [options]="allProducts" optionLabel="name" optionValue="id"
+                [(ngModel)]="formData.productId" placeholder="Select a Product" [disabled]="!!salesRecord"
+                styleClass="w-full"></p-select>
+        </div>
+
+        <div class="my-1 p-col-12">
+            <label class="col-3" for="quantity"><strong>Quantity</strong></label>
+            <input class="col-9" id="quantity" type="number" pInputText [(ngModel)]="formData.quantity" [min]="0"
+                class="w-full" />
+        </div>
+    </div>
+
+    <div class="p-drawer-footer mt-4">
+        <p-button class="mx-2" type="button" label="Save" icon="pi pi-check" (click)="onSave()"></p-button>
+        <p-button type="button" label="Cancel" class="mx-2 mr-2" (click)="onClose()"></p-button>
+    </div>
+</p-drawer>

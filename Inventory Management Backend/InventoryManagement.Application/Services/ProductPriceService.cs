@@ -71,7 +71,7 @@ namespace InventoryManagement.Application.Services
         {
             var oldProductPrice = _productPricesRepository.GetAllAsync().Result.Where(e => e.ProductId == dto.ProductDto.Id).ToList();
             
-            if (oldProductPrice is not null)
+            if (oldProductPrice.Any())
             {
                 throw new InvalidOperationException("That product has an existing price.");
             }

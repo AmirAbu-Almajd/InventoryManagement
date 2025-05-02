@@ -71,7 +71,7 @@ namespace InventoryManagement.Application.Services
         {
             var oldStockRecord = _stockRecordRepository.GetAllAsync().Result.Where(e => e.ProductId == dto.ProductDto.Id).ToList();
 
-            if (oldStockRecord is not null)
+            if (oldStockRecord.Any())
             {
                 throw new InvalidOperationException("That product has an existing stock record.");
             }

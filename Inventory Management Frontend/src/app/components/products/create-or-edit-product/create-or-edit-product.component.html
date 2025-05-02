@@ -1,0 +1,26 @@
+<p-drawer [visible]="visible" position="right" [modal]="true" [style]="{ width: '30vw' }" (onHide)="onClose()">
+    <div class="p-drawer-header">
+        <h3>{{ product ? 'Edit Product' : 'Add Product' }}</h3>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="my-1  p-field p-col-12">
+            <label class="col-2" for="code"><strong>Code</strong></label>
+            <input class="col-10" id="code" type="text" pInputText [(ngModel)]="formData.code" />
+        </div>
+        <div class="my-1 p-field p-col-12">
+            <label class="col-2" for="name"><strong>Name</strong></label>
+            <input class="col-10" id="name" type="text" pInputText [(ngModel)]="formData.name" />
+        </div>
+        <div class="my-1 p-field p-col-12">
+            <label class="col-3" for="description"><strong>Description</strong></label>
+            <input class="col-9" id="description" type="text" pInputText [(ngModel)]="formData.description" />
+
+        </div>
+    </div>
+
+    <div class="p-drawer-footer mt-4">
+        <p-button class="mx-2" type="button" label="Save" icon="pi pi-check" (click)="onSave()"></p-button>
+        <p-button type="button" label="Cancel" class="mx-2 mr-2" (click)="onClose()"></p-button>
+    </div>
+</p-drawer>

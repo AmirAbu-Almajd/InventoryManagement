@@ -32,15 +32,15 @@ namespace InventoryManagement.Controllers
             return Ok(product);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Create(ProductDto dto)
+        [HttpPost("{Product}")]
+        public async Task<ActionResult> Create([FromBody] ProductDto dto)
         {
             await _productsService.AddProductAsync(dto);
             return CreatedAtAction(nameof(GetAll), null);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(Guid id, ProductDto dto)
+        public async Task<ActionResult> Update(ProductDto dto)
         {
             await _productsService.UpdateProductAsync(dto);
             return NoContent();

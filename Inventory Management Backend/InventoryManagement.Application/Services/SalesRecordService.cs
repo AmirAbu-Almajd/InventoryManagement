@@ -84,7 +84,7 @@ namespace InventoryManagement.Application.Services
                 throw new InvalidOperationException("Insufficient stock.");
             }
 
-            decimal? productPrice = _productPricesRepository.GetAllAsync().Result.Where(e => e.ProductId == (Guid)dto.ProductDto.Id).FirstOrDefault().Price;
+            decimal? productPrice = _productPricesRepository.GetAllAsync().Result.Where(e => e.ProductId == (Guid)dto.ProductDto.Id).FirstOrDefault()?.Price;
 
             var salesRecord = new SalesRecord
             {

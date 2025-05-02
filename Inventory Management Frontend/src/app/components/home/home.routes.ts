@@ -1,8 +1,8 @@
 import { Routes } from "@angular/router";
 import { ProductListComponent } from "../products/product-list.component";
-import { PricesComponent } from "../prices/prices.component";
-import { StocksComponent } from "../stocks/stocks.component";
-import { SalesComponent } from "../sales/sales.component";
+import { ProductPriceListComponent } from "../prices/product-price-list.component";
+import { StockRecordListComponent } from "../stocks/stock-record-list.component";
+import { SalesRecordListComponent } from "../sales/sales-record-list.component";
 
 
 export const routes: Routes = [
@@ -17,15 +17,15 @@ export const routes: Routes = [
     },
     {
         path: 'prices',
-        component : PricesComponent
+        component : ProductPriceListComponent
     },
     {
         path: 'stocks',
-        component : StocksComponent
+        component : StockRecordListComponent
     },
     {
         path: 'sales',
-        component : SalesComponent
+        component : SalesRecordListComponent
     },
     
 ]

@@ -3,26 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { Popover } from 'primeng/popover';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RouterModule } from '@angular/router';
 import { Image } from 'primeng/image';
 import { MenubarModule } from 'primeng/menubar';
-
+import { TableModule } from 'primeng/table';
+import { DrawerModule } from 'primeng/drawer';
+import { SelectModule } from 'primeng/select';
 
 @NgModule({
   imports: [
     CommonModule, 
     FormsModule,
-    ReactiveFormsModule,
-    FloatLabelModule,
-    PasswordModule,
-    ButtonModule,
-    RouterModule,
-    InputTextModule,
-    Popover,
-    MenubarModule,
     Image
   ],
   exports: [
@@ -33,10 +26,12 @@ import { MenubarModule } from 'primeng/menubar';
     PasswordModule,
     ButtonModule,
     InputTextModule,
-    Popover,
     Image,
+    SelectModule,
     MenubarModule,
-    RouterModule
+    RouterModule,
+    TableModule,
+    DrawerModule
   ],
   providers: [],
 })

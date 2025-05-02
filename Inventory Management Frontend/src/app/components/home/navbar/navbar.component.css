@@ -3,7 +3,7 @@
     border: 0.1rem solid transparent;
     font-weight: normal;
     font-size: 1.2rem;
-    color: #007bff;
+    color: #31a514;
     cursor: pointer;
     transition: padding 500ms ease-in-out, font-weight 200ms ease-in-out, color 500ms ease-in-out;
   }
@@ -23,5 +23,5 @@
     padding: 1rem 1rem 1rem 1rem;
     color: white;
     font-weight: bolder;
-    background-color: #0d6efd;
+    background-color: #31a514;
   }
