@@ -15,6 +15,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductPriceService, ProductPriceService>();
+builder.Services.AddScoped<IProductPriceRepository, ProductPriceRepository>();
+builder.Services.AddScoped<ISalesRecordService, SalesRecordService>();
+builder.Services.AddScoped<ISalesRecordRepository, SalesRecordRepository>();
+builder.Services.AddScoped<IStockRecordService, StockRecordService>();
+builder.Services.AddScoped<IStockRecordRepository, StockRecordRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

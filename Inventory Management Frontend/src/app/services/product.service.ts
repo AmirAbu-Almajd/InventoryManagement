@@ -17,24 +17,24 @@ export interface ProductDto {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://localhost:44373/api/product'; // update port if needed
+  private apiUrl = 'https://localhost:44373/api/product'; 
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
+  getProducts(): Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(this.apiUrl);
   }
 
-  getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  getProduct(id: string): Observable<ProductDto> {
+    return this.http.get<ProductDto>(`${this.apiUrl}/${id}`);
   }
 
   createProduct(product: ProductDto): Observable<any> {
     return this.http.post(this.apiUrl, product);
   }
 
-  updateProduct(id: string, product: ProductDto): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, product);
+  updateProduct(product: ProductDto): Observable<any> {
+    return this.http.put(this.apiUrl, product);
   }
 
   deleteProduct(id: string): Observable<any> {

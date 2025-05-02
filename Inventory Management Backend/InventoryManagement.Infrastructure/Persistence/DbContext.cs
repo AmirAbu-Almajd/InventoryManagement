@@ -9,5 +9,18 @@ namespace InventoryManagement.Infrastructure.Persistence
             : base(options) { }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<SalesRecord> SalesRecords { get; set; }
+        public DbSet<ProductPrice> ProductPrices { get; set; }
+        public DbSet<StockRecord> StockRecords { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<StockRecord>()
+                .HasIndex(sr => sr.ProductId)
+                .IsUnique(); 
+        }
     }
 }

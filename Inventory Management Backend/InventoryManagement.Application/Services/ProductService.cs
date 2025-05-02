@@ -1,6 +1,4 @@
-﻿
-
-using InventoryManagement.Application.DTOs;
+﻿using InventoryManagement.Application.DTOs;
 using InventoryManagement.Application.Interfaces;
 using InventoryManagement.Domain.Entities;
 using InventoryManagement.Domain.Interfaces;
@@ -16,14 +14,28 @@ namespace InventoryManagement.Application.Services
             _productsRepository = productsRepository;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            return await _productsRepository.GetAllAsync();
+            var res = await _productsRepository.GetAllAsync();
+            return res.Select(p => new ProductDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Code = p.Code
+            }).ToList();
         }
 
-        public async Task<Product?> GetProductByIdAsync(Guid id)
+        public async Task<ProductDto?> GetProductByIdAsync(Guid id)
         {
-            return await _productsRepository.GetByIdAsync(id);
+            var res = await _productsRepository.GetByIdAsync(id);
+            return new ProductDto
+            {
+                Id = res.Id,
+                Name = res.Name,
+                Description = res.Description,
+                Code = res.Code
+            };
         }
 
         public async Task AddProductAsync(ProductDto dto)
@@ -32,17 +44,18 @@ namespace InventoryManagement.Application.Services
             {
                 Name = dto.Name,
                 Code = dto.Code,
-
+                Description = dto.Description
             };
             await _productsRepository.AddAsync(product);
         }
 
-        public async Task UpdateProductAsync(Guid id, ProductDto dto)
+        public async Task UpdateProductAsync(ProductDto dto)
         {
-            var existing = await _productsRepository.GetByIdAsync(id);
+            var existing = await _productsRepository.GetByIdAsync((Guid)dto.Id);
             if (existing == null) return;
 
             existing.Name = dto.Name;
+            existing.Code = dto.Code;
 
             await _productsRepository.UpdateAsync(existing);
         }

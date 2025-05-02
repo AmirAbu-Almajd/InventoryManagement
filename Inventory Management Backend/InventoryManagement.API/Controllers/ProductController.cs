@@ -42,7 +42,7 @@ namespace InventoryManagement.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(Guid id, ProductDto dto)
         {
-            await _productsService.UpdateProductAsync(id, dto);
+            await _productsService.UpdateProductAsync(dto);
             return NoContent();
         }
 

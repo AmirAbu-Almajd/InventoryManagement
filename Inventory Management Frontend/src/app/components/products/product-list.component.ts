@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductService } from '../../services/product.service';
+import { ProductDto, ProductService } from '../../services/product.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
+  standalone: true,
   selector: 'product-list',
+  imports: [SharedModule],
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+  products: ProductDto[] = [];
 
   constructor(private productService: ProductService) {}
 

@@ -1,10 +1,9 @@
-﻿using InventoryManagement.Domain.Commons;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManagement.Domain.Entities
 {
-    public class Product : FullAuditedEntity
+    public class Product
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]

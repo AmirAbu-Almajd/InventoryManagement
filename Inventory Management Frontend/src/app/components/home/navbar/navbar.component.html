@@ -1,0 +1,16 @@
+<nav  class="navbar p-2 navbar-expand-lg bg-white">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item d-flex align-items-center" *ngFor="let tab of tabs; let i = index">
+          <button class="nav-button py-2 mx-1 my-auto" [ngClass]="{'active': activeTab === i}"
+            (click)="navigateTo(tab.header);this.activeTab = i;">
+            {{ tab.label }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
