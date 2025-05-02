@@ -75,6 +75,10 @@ namespace InventoryManagement.Application.Services
             {
                 throw new InvalidOperationException("That product has an existing stock record.");
             }
+            else if(dto.Quantity < 0)
+            {
+                throw new InvalidOperationException("The stock quantity cannot be negative.");
+            }
 
             var stockRecord = new StockRecord
             {
@@ -89,6 +93,10 @@ namespace InventoryManagement.Application.Services
             var existing = await _stockRecordRepository.GetByIdAsync((long)dto.Id);
             if (existing == null) return;
 
+            else if (dto.Quantity < 0)
+            {
+                throw new InvalidOperationException("The stock quantity cannot be negative.");
+            }
             existing.Quantity = dto.Quantity;
 
             await _stockRecordRepository.UpdateAsync(existing);

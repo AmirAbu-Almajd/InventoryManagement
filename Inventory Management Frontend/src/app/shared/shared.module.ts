@@ -11,6 +11,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
 import { DrawerModule } from 'primeng/drawer';
 import { SelectModule } from 'primeng/select';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { SelectModule } from 'primeng/select';
     Image,
     SelectModule,
     MenubarModule,
+    ToastModule,
     RouterModule,
     TableModule,
     DrawerModule
